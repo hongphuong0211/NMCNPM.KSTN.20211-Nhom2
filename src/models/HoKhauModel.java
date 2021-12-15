@@ -88,6 +88,8 @@ public class HoKhauModel {
     public void setNguoiThucHien(int nguoiThucHien) {
         this.nguoiThucHien = nguoiThucHien;
     }
-    
-    
+
+    public Boolean compareTo(HoKhauModel other) {
+        return this.ID == other.ID;
+    }
 }
