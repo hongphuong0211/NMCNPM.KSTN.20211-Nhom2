@@ -4,26 +4,47 @@
  */
 package models;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 /**
  *
  * @author Admin
  */
 public class DotDongGopModel {
-    private LocalDate ngayBatDau;
+    private Date ngayBatDau;
     private String tenDotDongGop;
-
-    public DotDongGopModel(LocalDate ngayBatDau, String tenDotDongGop) {
-        this.ngayBatDau = ngayBatDau;
-        this.tenDotDongGop = tenDotDongGop;
+    private int ID;
+    private Date ngayKetThuc;
+ 
+//    public DotDongGopModel(int ID, String tenDotDongGop, Date ngayBatDau, Date ngayKetThuc) {
+//        this.ID = ID;
+//        this.tenDotDongGop = tenDotDongGop;
+//        this.ngayBatDau = ngayBatDau;
+//        this.ngayKetThuc = ngayKetThuc;
+//    }
+    public Date getNgayBatDau() {
+        return this.ngayBatDau;
     }
-
-    public LocalDate getNgayBatDau() {
-        return ngayBatDau;
+    public void setNgayBatDau(Date ngay) {
+        this.ngayBatDau = ngay;
     }
-
+    public Date getNgayKetThuc() {
+        return this.ngayKetThuc;
+               
+    }
+    public void setNgayKetThuc(Date ngay) {
+        this.ngayKetThuc = ngay;
+    }
     public String getTenDotDongGop() {
-        return tenDotDongGop;
+        return this.tenDotDongGop;
+    }
+    public void setTenDotDongGop(String ten) {
+        this.tenDotDongGop = ten;
+    }
+    public int getID() {
+        return this.ID;
+    }
+    public void setID(int ID) {
+        this.ID = ID;
     }
 }

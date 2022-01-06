@@ -15,11 +15,15 @@ import models.HoKhauModel;
  */
 public class DotThuPhiBean {
     private DotThuPhiModel dotThuPhi;
-    private Dictionary<HoKhauModel, Integer> danhSachHoThuPhi = new Hashtable<HoKhauModel, Integer>();
+    //private Dictionary<HoKhauModel, Integer> danhSachHoThuPhi = new Hashtable<HoKhauModel, Integer>();
 
     public DotThuPhiBean(DotThuPhiModel dotThuPhi) {
         this.dotThuPhi = dotThuPhi;
-        danhSachHoThuPhi = new Hashtable<HoKhauModel, Integer>();
+       // danhSachHoThuPhi = new Hashtable<HoKhauModel, Integer>();
+    }
+
+    public DotThuPhiBean() {
+        this.dotThuPhi = new DotThuPhiModel();
     }
 
     public DotThuPhiModel getDotThuPhi() {
@@ -30,17 +34,17 @@ public class DotThuPhiBean {
         this.dotThuPhi = dotThuPhi;
     }
 
-    public Dictionary<HoKhauModel, Integer> getDanhSachHoThuPhi() {
-        return danhSachHoThuPhi;
-    }
+//    public Dictionary<HoKhauModel, Integer> getDanhSachHoThuPhi() {
+//        return danhSachHoThuPhi;
+//    }
 
-    public void setDanhSachHoThuPhi(Dictionary<HoKhauModel, Integer> danhSachHoThuPhi) {
-        this.danhSachHoThuPhi = danhSachHoThuPhi;
-    }
-    
-    public void insertDanhSachHoThuPhi(HoKhauModel hokhau, int tien){
-        
-    }
-    
+//    public void setDanhSachHoThuPhi(Dictionary<HoKhauModel, Integer> danhSachHoThuPhi) {
+//        this.danhSachHoThuPhi = danhSachHoThuPhi;
+//    }
+//    
+//    public void insertDanhSachHoThuPhi(HoKhauModel hokhau, int tien){
+//        
+//    }
+//    
     
 }
