@@ -1,18 +1,25 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ */
 package views;
 
 import controllers.HomeCotroller;
 
 /**
  *
- * @author Ai làm thì điền tên vào
+ * @author quant
  */
-public class HomePagePanel extends javax.swing.JPanel {
+public class TrangChuQuanLyPanel extends javax.swing.JPanel {
 
-    private HomeCotroller cotroller;
-    public HomePagePanel() {
+    /**
+     * Creates new form NewJPanel
+     */
+    private HomeCotroller controller; 
+    public TrangChuQuanLyPanel() {
         initComponents();
-        this.cotroller = new HomeCotroller(tongNhanKhauLb, tongHoKhauLb, nhanKhauTamTruLb, nhanKhauTamVangLb);
-        this.cotroller.setData();
+        this.controller = new HomeCotroller(tongNhanKhauLb, tongHoKhauLb, nhanKhauTamTruLb, nhanKhauTamVangLb);
+        this.controller.setData();
     }
 
     /**
@@ -29,24 +36,21 @@ public class HomePagePanel extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         tongNhanKhauLb = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        tongHoKhauLb = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         nhanKhauTamTruLb = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        tongHoKhauLb = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         nhanKhauTamVangLb = new javax.swing.JLabel();
-
-        setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(841, 610));
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -65,7 +69,7 @@ public class HomePagePanel extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Nhân khẩu có trên địa bàn:");
+        jLabel2.setText("Hộ khẩu có trên địa bàn:");
 
         tongNhanKhauLb.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         tongNhanKhauLb.setForeground(new java.awt.Color(255, 255, 255));
@@ -98,56 +102,6 @@ public class HomePagePanel extends javax.swing.JPanel {
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel3.setBackground(new java.awt.Color(102, 102, 102));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/house.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 8, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Hộ khẩu có trên địa bàn:");
-
-        tongHoKhauLb.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        tongHoKhauLb.setForeground(new java.awt.Color(255, 255, 255));
-        tongHoKhauLb.setText("1000");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(tongHoKhauLb))
-                .addContainerGap(519, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tongHoKhauLb)
-                .addContainerGap())
-            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
         jPanel5.setBackground(new java.awt.Color(102, 102, 102));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/check-in.png"))); // NOI18N
@@ -165,11 +119,11 @@ public class HomePagePanel extends javax.swing.JPanel {
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Nhân khẩu tạm trú:");
+        jLabel8.setText("Tổng số hộ đã nộp trong năm 2021:");
 
         nhanKhauTamTruLb.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         nhanKhauTamTruLb.setForeground(new java.awt.Color(255, 255, 255));
-        nhanKhauTamTruLb.setText("1000");
+        nhanKhauTamTruLb.setText("100/1000");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -198,6 +152,56 @@ public class HomePagePanel extends javax.swing.JPanel {
             .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jPanel3.setBackground(new java.awt.Color(102, 102, 102));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/house.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 8, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Tổng số tiền đã đóng góp trong năm 2021:");
+
+        tongHoKhauLb.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        tongHoKhauLb.setForeground(new java.awt.Color(255, 255, 255));
+        tongHoKhauLb.setText("1000VND");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(4, 4, 4)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(tongHoKhauLb))
+                .addContainerGap(529, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tongHoKhauLb)
+                .addContainerGap())
+            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         jPanel7.setBackground(new java.awt.Color(102, 102, 102));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/hotel.png"))); // NOI18N
@@ -215,11 +219,11 @@ public class HomePagePanel extends javax.swing.JPanel {
 
         jLabel11.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Nhân khẩu tạm vắng:");
+        jLabel11.setText("Tổng số tiền đã thu trong năm 2021:");
 
         nhanKhauTamVangLb.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         nhanKhauTamVangLb.setForeground(new java.awt.Color(255, 255, 255));
-        nhanKhauTamVangLb.setText("1000");
+        nhanKhauTamVangLb.setText("1000VND");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -272,7 +276,7 @@ public class HomePagePanel extends javax.swing.JPanel {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                .addGap(24, 24, 24))
         );
     }// </editor-fold>//GEN-END:initComponents
 
