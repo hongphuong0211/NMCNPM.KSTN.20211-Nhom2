@@ -13,11 +13,16 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import views.DongGopPanel;
 import views.HoKhauManagePanel;
 import views.HomePagePanel;
 import views.NhanKhauManagePanel;
 import views.ThongKePanel;
 import views.TimKiemPanel;
+import views.TrangChuQuanLyPanel;
+import views.MainFrame;
+import views.ThongKeTPDGPanel;
+import views.ThuPhiPanel;
 
 /**
  *
@@ -58,6 +63,18 @@ public class MainController {
                     view = new ThongKePanel(this.jfrMain);
                     break;
                 //any more
+                case "QuanLyThuPhiDongGop":
+                    view = new TrangChuQuanLyPanel();
+                    break;
+                case "ThuPhi":
+                    view = new ThuPhiPanel(this.jfrMain);
+                    break;
+                case "DongGop":
+                    view = new DongGopPanel(this.jfrMain);
+                    break;
+                case "ThongKeTPDG":
+                    view = new ThongKeTPDGPanel(this.jfrMain);
+                    break;
                 default:
                     break;
             }
@@ -126,6 +143,18 @@ public class MainController {
                     break;
                 case "ThongKe":
                     view = new ThongKePanel(this.jfrMain);
+                    break;
+                case "QuanLyThuPhiDongGop":
+                    view = new TrangChuQuanLyPanel();
+                    break;
+                case "ThuPhi":
+                    view = new ThuPhiPanel(this.jfrMain);
+                    break;
+                case "DongGop":
+                    view = new DongGopPanel(this.jfrMain);
+                    break;
+                case "ThongKeTPDG":
+                    view = new ThongKeTPDGPanel(this.jfrMain);
                     break;
                 default:
                     break;

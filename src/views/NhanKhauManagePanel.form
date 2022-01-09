@@ -103,6 +103,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addNewBtnActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="NhanKhauManagePanel_addNewBtn"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="tamTruBtn">
       <Properties>
