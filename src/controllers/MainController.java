@@ -22,6 +22,7 @@ import views.TimKiemPanel;
 import views.TrangChuQuanLyPanel;
 import views.MainFrame;
 import views.ThongKeTPDGPanel;
+import views.ThongKeDongGopPanel;
 import views.ThuPhiPanel;
 
 /**
@@ -72,8 +73,11 @@ public class MainController {
                 case "DongGop":
                     view = new DongGopPanel(this.jfrMain);
                     break;
-                case "ThongKeThuPhi":
+                case "ThongKeTPDG":
                     view = new ThongKeTPDGPanel(this.jfrMain);
+                    break;
+                case "ThongKeDongGop":
+                    view = new ThongKeDongGopPanel(this.jfrMain);
                     break;
                 default:
                     break;
@@ -155,6 +159,9 @@ public class MainController {
                     break;
                 case "ThongKeTPDG":
                     view = new ThongKeTPDGPanel(this.jfrMain);
+                    break;
+                case "ThongKeDongGop":
+                    view = new ThongKeDongGopPanel(this.jfrMain);
                     break;
                 default:
                     break;

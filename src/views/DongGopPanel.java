@@ -6,6 +6,12 @@ package views;
 
 import controllers.HoKhauPanelController;
 import javax.swing.JFrame;
+import views.NhanKhauManagerFrame.AddNewPeopleJFrame;
+import views.NhanKhauManagerFrame.DangKyTamVangJFrame;
+import views.DongGopManagerFrame.ThemThongTinDongGopJFrame;
+import views.DongGopManagerFrame.TaoMoiDotDongGopJFrame;
+import controllers.DongGopPanelController;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,14 +19,17 @@ import javax.swing.JFrame;
  */
 public class DongGopPanel extends javax.swing.JPanel {
 
-    private JFrame parentFrame;
-    private HoKhauPanelController controller;
     /**
-     * Creates new form DongGopPanel
+     * Creates new form ThuPhiPanel
      */
+    
+    private DongGopPanelController controller = null;
+    private JFrame parentJFrame;
+    
     public DongGopPanel(JFrame parentFrame) {
+        this.parentJFrame = parentFrame;
         initComponents();
-        controller = new HoKhauPanelController(jtfSearch, tableJpn);
+        controller = new DongGopPanelController(NhapDotThuPhiText, tablePanel);
         controller.setParentJFrame(parentFrame);
     }
 
@@ -33,40 +42,71 @@ public class DongGopPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tableJpn = new javax.swing.JPanel();
-        GhiNhanBtn = new javax.swing.JButton();
+        tablePanel = new javax.swing.JPanel();
         TaoMoiBtn = new javax.swing.JButton();
-        DotDongGop = new javax.swing.JComboBox<>();
-        jtfSearch = new javax.swing.JTextField();
+        GhiNhanBtn = new javax.swing.JButton();
+        NhapDotThuPhiText = new javax.swing.JTextField();
+        SoTienMoiNhanKhauText = new javax.swing.JTextField();
+        SoTienMoiNhanKhauLabel = new javax.swing.JLabel();
+        NhapDotThuPhiLabel = new javax.swing.JLabel();
+        Search = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(250, 250, 250));
+        setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout tableJpnLayout = new javax.swing.GroupLayout(tableJpn);
-        tableJpn.setLayout(tableJpnLayout);
-        tableJpnLayout.setHorizontalGroup(
-            tableJpnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout tablePanelLayout = new javax.swing.GroupLayout(tablePanel);
+        tablePanel.setLayout(tablePanelLayout);
+        tablePanelLayout.setHorizontalGroup(
+            tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        tableJpnLayout.setVerticalGroup(
-            tableJpnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 387, Short.MAX_VALUE)
+        tablePanelLayout.setVerticalGroup(
+            tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-
-        GhiNhanBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        GhiNhanBtn.setText("Ghi nhận");
-        GhiNhanBtn.setPreferredSize(new java.awt.Dimension(101, 25));
 
         TaoMoiBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         TaoMoiBtn.setText("Tạo mới");
         TaoMoiBtn.setPreferredSize(new java.awt.Dimension(101, 25));
-
-        DotDongGop.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        DotDongGop.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn đợt đóng góp", "Ủng hộ Covid" }));
-
-        jtfSearch.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jtfSearch.addActionListener(new java.awt.event.ActionListener() {
+        TaoMoiBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfSearchActionPerformed(evt);
+                TaoMoiBtnActionPerformed(evt);
+            }
+        });
+
+        GhiNhanBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        GhiNhanBtn.setText("Ghi Nhận");
+        GhiNhanBtn.setPreferredSize(new java.awt.Dimension(101, 25));
+        GhiNhanBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GhiNhanBtnActionPerformed(evt);
+            }
+        });
+
+        NhapDotThuPhiText.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        NhapDotThuPhiText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NhapDotThuPhiTextActionPerformed(evt);
+            }
+        });
+
+        SoTienMoiNhanKhauText.setBackground(new java.awt.Color(240, 240, 240));
+        SoTienMoiNhanKhauText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SoTienMoiNhanKhauTextActionPerformed(evt);
+            }
+        });
+
+        SoTienMoiNhanKhauLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        SoTienMoiNhanKhauLabel.setText("Số tiền cần nộp/nhân khẩu: ");
+
+        NhapDotThuPhiLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        NhapDotThuPhiLabel.setText("Nhập đợt đóng góp:");
+
+        Search.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        Search.setText("Search");
+        Search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchActionPerformed(evt);
             }
         });
 
@@ -76,46 +116,92 @@ public class DongGopPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(DotDongGop, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(jtfSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE))
-                    .addComponent(tableJpn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(SoTienMoiNhanKhauLabel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(NhapDotThuPhiLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(SoTienMoiNhanKhauText, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                            .addComponent(NhapDotThuPhiText))
+                        .addGap(18, 18, 18)
+                        .addComponent(Search)
+                        .addGap(0, 260, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(GhiNhanBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TaoMoiBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(GhiNhanBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TaoMoiBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DotDongGop, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SoTienMoiNhanKhauLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SoTienMoiNhanKhauText, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NhapDotThuPhiText, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NhapDotThuPhiLabel)
+                    .addComponent(Search))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tableJpn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(103, 103, 103)
+                .addGap(113, 113, 113)
                 .addComponent(TaoMoiBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addComponent(GhiNhanBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jtfSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfSearchActionPerformed
+    private void NhapDotThuPhiTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NhapDotThuPhiTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtfSearchActionPerformed
+    }//GEN-LAST:event_NhapDotThuPhiTextActionPerformed
+
+    private void SoTienMoiNhanKhauTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SoTienMoiNhanKhauTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SoTienMoiNhanKhauTextActionPerformed
+
+    private void TaoMoiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TaoMoiBtnActionPerformed
+        // TODO add your handling code here:
+        TaoMoiDotDongGopJFrame TaoMoiDotDongGopJFrame = new TaoMoiDotDongGopJFrame(this.parentJFrame, this.controller);
+        TaoMoiDotDongGopJFrame.setLocationRelativeTo(null);
+        TaoMoiDotDongGopJFrame.setResizable(false);
+        TaoMoiDotDongGopJFrame.setVisible(true);
+    }//GEN-LAST:event_TaoMoiBtnActionPerformed
+
+    private void GhiNhanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GhiNhanBtnActionPerformed
+        // TODO add your handling code here:
+        ThemThongTinDongGopJFrame ThemThongTinDongGopJFrame = new ThemThongTinDongGopJFrame(this.parentJFrame, this.controller);
+        ThemThongTinDongGopJFrame.setLocationRelativeTo(null);
+        ThemThongTinDongGopJFrame.setResizable(false);
+        ThemThongTinDongGopJFrame.setVisible(true);
+    }//GEN-LAST:event_GhiNhanBtnActionPerformed
+
+    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
+        // TODO add your handling code here:
+        
+        if (this.controller.search(Integer.parseInt(NhapDotThuPhiText.getText())) == 0){
+            JOptionPane.showMessageDialog(null, "Có lỗi xảy ra. Vui long kiểm tra lại!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        else this.controller.refreshData();
+    }//GEN-LAST:event_SearchActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> DotDongGop;
     private javax.swing.JButton GhiNhanBtn;
+    private javax.swing.JLabel NhapDotThuPhiLabel;
+    private javax.swing.JTextField NhapDotThuPhiText;
+    private javax.swing.JButton Search;
+    private javax.swing.JLabel SoTienMoiNhanKhauLabel;
+    private javax.swing.JTextField SoTienMoiNhanKhauText;
     private javax.swing.JButton TaoMoiBtn;
-    private javax.swing.JTextField jtfSearch;
-    private javax.swing.JPanel tableJpn;
+    private javax.swing.JPanel tablePanel;
     // End of variables declaration//GEN-END:variables
 }
