@@ -27,7 +27,7 @@ import views.infoViews.InfoJframe;
 import models.DotThuPhiModel;
 import java.util.Date;  
 import java.text.SimpleDateFormat;  
-
+import javax.swing.JLabel;
 
 /**
  *
@@ -54,9 +54,8 @@ public class ThuPhiPanelController {
 //        dotThuPhiModel.setTenDotThuPhi("test1");
 //        this.DotThuPhi.setDotThuPhi(dotThuPhiModel);
         
-        this.DotThuPhi = this.dotThuPhiService.getDotThuPhi(1);
-        setData();
-        initAction();
+//        setData();
+//        initAction();
         // them dot thu phi model
 //        try{
 //        String sDate1="0/09/1990";  
@@ -70,10 +69,11 @@ public class ThuPhiPanelController {
         
     }
     
-    public int search(int id){
+    public int search(int id, JLabel SoTienMoiNhanKhauText){
         DotThuPhiBean tmp = this.dotThuPhiService.getDotThuPhi(id);
         if (tmp != null) {
             this.DotThuPhi = tmp;
+            SoTienMoiNhanKhauText.setText(String.valueOf(tmp.getDotThuPhi().getSoTienMoiNhanKhau()));
             return 1;
         }
         else{

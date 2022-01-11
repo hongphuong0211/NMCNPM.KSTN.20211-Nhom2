@@ -54,9 +54,8 @@ public class DongGopPanelController {
 //        dotDongGopModel.setTenDotDongGop("test1");
 //        this.DotDongGop.setDotDongGop(dotDongGopModel);
         
-        this.DotDongGop = this.dotDongGopService.getDotDongGop(1);
-        setData();
-        initAction();
+//        setData();
+//        initAction();
         // them dot thu phi model
 //        try{
 //        String sDate1="0/09/1990";  

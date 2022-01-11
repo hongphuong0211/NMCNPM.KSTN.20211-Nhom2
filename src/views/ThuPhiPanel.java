@@ -46,10 +46,10 @@ public class ThuPhiPanel extends javax.swing.JPanel {
         TaoMoiBtn = new javax.swing.JButton();
         GhiNhanBtn = new javax.swing.JButton();
         NhapDotThuPhiText = new javax.swing.JTextField();
-        SoTienMoiNhanKhauText = new javax.swing.JTextField();
         SoTienMoiNhanKhauLabel = new javax.swing.JLabel();
         NhapDotThuPhiLabel = new javax.swing.JLabel();
         Search = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -89,13 +89,6 @@ public class ThuPhiPanel extends javax.swing.JPanel {
             }
         });
 
-        SoTienMoiNhanKhauText.setBackground(new java.awt.Color(240, 240, 240));
-        SoTienMoiNhanKhauText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SoTienMoiNhanKhauTextActionPerformed(evt);
-            }
-        });
-
         SoTienMoiNhanKhauLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         SoTienMoiNhanKhauLabel.setText("Số tiền cần nộp/nhân khẩu: ");
 
@@ -110,6 +103,8 @@ public class ThuPhiPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setText("N/A");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -123,12 +118,15 @@ public class ThuPhiPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(NhapDotThuPhiLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(SoTienMoiNhanKhauText, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                            .addComponent(NhapDotThuPhiText))
-                        .addGap(18, 18, 18)
-                        .addComponent(Search)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(NhapDotThuPhiText, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Search))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addComponent(jLabel1)))
                         .addGap(0, 260, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,7 +140,7 @@ public class ThuPhiPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SoTienMoiNhanKhauLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SoTienMoiNhanKhauText, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NhapDotThuPhiText, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -164,10 +162,6 @@ public class ThuPhiPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_NhapDotThuPhiTextActionPerformed
 
-    private void SoTienMoiNhanKhauTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SoTienMoiNhanKhauTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SoTienMoiNhanKhauTextActionPerformed
-
     private void TaoMoiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TaoMoiBtnActionPerformed
         // TODO add your handling code here:
         TaoMoiDotThuPhiJFrame TaoMoiDotThuPhiJFrame = new TaoMoiDotThuPhiJFrame(this.parentJFrame, this.controller);
@@ -187,7 +181,7 @@ public class ThuPhiPanel extends javax.swing.JPanel {
     private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
         // TODO add your handling code here:
         
-        if (this.controller.search(Integer.parseInt(NhapDotThuPhiText.getText())) == 0){
+        if (this.controller.search(Integer.parseInt(NhapDotThuPhiText.getText()), jLabel1) == 0){
             JOptionPane.showMessageDialog(null, "Có lỗi xảy ra. Vui long kiểm tra lại!!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
         else this.controller.refreshData();
@@ -200,8 +194,8 @@ public class ThuPhiPanel extends javax.swing.JPanel {
     private javax.swing.JTextField NhapDotThuPhiText;
     private javax.swing.JButton Search;
     private javax.swing.JLabel SoTienMoiNhanKhauLabel;
-    private javax.swing.JTextField SoTienMoiNhanKhauText;
     private javax.swing.JButton TaoMoiBtn;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel tablePanel;
     // End of variables declaration//GEN-END:variables
 }

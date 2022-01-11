@@ -46,8 +46,6 @@ public class DongGopPanel extends javax.swing.JPanel {
         TaoMoiBtn = new javax.swing.JButton();
         GhiNhanBtn = new javax.swing.JButton();
         NhapDotThuPhiText = new javax.swing.JTextField();
-        SoTienMoiNhanKhauText = new javax.swing.JTextField();
-        SoTienMoiNhanKhauLabel = new javax.swing.JLabel();
         NhapDotThuPhiLabel = new javax.swing.JLabel();
         Search = new javax.swing.JButton();
 
@@ -89,16 +87,6 @@ public class DongGopPanel extends javax.swing.JPanel {
             }
         });
 
-        SoTienMoiNhanKhauText.setBackground(new java.awt.Color(240, 240, 240));
-        SoTienMoiNhanKhauText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SoTienMoiNhanKhauTextActionPerformed(evt);
-            }
-        });
-
-        SoTienMoiNhanKhauLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        SoTienMoiNhanKhauLabel.setText("Số tiền cần nộp/nhân khẩu: ");
-
         NhapDotThuPhiLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         NhapDotThuPhiLabel.setText("Nhập đợt đóng góp:");
 
@@ -118,15 +106,10 @@ public class DongGopPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(SoTienMoiNhanKhauLabel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(NhapDotThuPhiLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(SoTienMoiNhanKhauText, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                            .addComponent(NhapDotThuPhiText))
+                        .addContainerGap()
+                        .addComponent(NhapDotThuPhiLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59)
+                        .addComponent(NhapDotThuPhiText, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Search)
                         .addGap(0, 260, Short.MAX_VALUE)))
@@ -139,11 +122,7 @@ public class DongGopPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SoTienMoiNhanKhauLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SoTienMoiNhanKhauText, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NhapDotThuPhiText, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NhapDotThuPhiLabel)
@@ -163,10 +142,6 @@ public class DongGopPanel extends javax.swing.JPanel {
     private void NhapDotThuPhiTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NhapDotThuPhiTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NhapDotThuPhiTextActionPerformed
-
-    private void SoTienMoiNhanKhauTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SoTienMoiNhanKhauTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SoTienMoiNhanKhauTextActionPerformed
 
     private void TaoMoiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TaoMoiBtnActionPerformed
         // TODO add your handling code here:
@@ -199,8 +174,6 @@ public class DongGopPanel extends javax.swing.JPanel {
     private javax.swing.JLabel NhapDotThuPhiLabel;
     private javax.swing.JTextField NhapDotThuPhiText;
     private javax.swing.JButton Search;
-    private javax.swing.JLabel SoTienMoiNhanKhauLabel;
-    private javax.swing.JTextField SoTienMoiNhanKhauText;
     private javax.swing.JButton TaoMoiBtn;
     private javax.swing.JPanel tablePanel;
     // End of variables declaration//GEN-END:variables
