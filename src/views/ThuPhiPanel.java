@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import views.NhanKhauManagerFrame.AddNewPeopleJFrame;
 import views.NhanKhauManagerFrame.DangKyTamVangJFrame;
 import views.ThuPhiManagerFrame.ThemThongTinThuPhiJFrame;
+import views.ThuPhiManagerFrame.TaoMoiDotThuPhiJFrame;
 import controllers.ThuPhiPanelController;
 import javax.swing.JOptionPane;
 
@@ -169,7 +170,10 @@ public class ThuPhiPanel extends javax.swing.JPanel {
 
     private void TaoMoiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TaoMoiBtnActionPerformed
         // TODO add your handling code here:
-        
+        TaoMoiDotThuPhiJFrame TaoMoiDotThuPhiJFrame = new TaoMoiDotThuPhiJFrame(this.parentJFrame, this.controller);
+        TaoMoiDotThuPhiJFrame.setLocationRelativeTo(null);
+        TaoMoiDotThuPhiJFrame.setResizable(false);
+        TaoMoiDotThuPhiJFrame.setVisible(true);
     }//GEN-LAST:event_TaoMoiBtnActionPerformed
 
     private void GhiNhanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GhiNhanBtnActionPerformed
