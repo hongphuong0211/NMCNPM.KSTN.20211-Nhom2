@@ -46,19 +46,24 @@ public class DotThuPhiService {
             PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = preparedStatement.executeQuery();
             DotThuPhiModel thuPhi = new DotThuPhiModel();
+            int check = 0;
             while (rs.next()) {
                 thuPhi.setID(id);
                 thuPhi.setSoTienMoiNhanKhau(rs.getInt("so_tien_/1_nguoi"));
                 thuPhi.setTenDotThuPhi(rs.getString("ten_dot_thu_phi"));
                 thuPhi.setNgayBatDau(rs.getDate("ngay_bat_dau"));
                 thuPhi.setNgayKetThuc(rs.getDate("ngay_ket_thuc"));
+                check = 1;
             }
-            dotThuPhiBean = new DotThuPhiBean();
-            dotThuPhiBean.setDotThuPhi(thuPhi);
+            if (check == 1){
+                dotThuPhiBean = new DotThuPhiBean();
+                dotThuPhiBean.setDotThuPhi(thuPhi);
+            }
             preparedStatement.close();
         } catch(Exception e) {
             this.exceptionHandle(e.getMessage());
         }
+        
         return dotThuPhiBean;
     }
     private void exceptionHandle(String message) {

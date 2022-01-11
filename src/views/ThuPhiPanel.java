@@ -10,6 +10,7 @@ import views.NhanKhauManagerFrame.AddNewPeopleJFrame;
 import views.NhanKhauManagerFrame.DangKyTamVangJFrame;
 import views.ThuPhiManagerFrame.ThemThongTinThuPhiJFrame;
 import controllers.ThuPhiPanelController;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -181,8 +182,11 @@ public class ThuPhiPanel extends javax.swing.JPanel {
 
     private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
         // TODO add your handling code here:
-        this.controller.search(Integer.parseInt(NhapDotThuPhiText.getText()));
-        this.controller.refreshData();
+        
+        if (this.controller.search(Integer.parseInt(NhapDotThuPhiText.getText())) == 0){
+            JOptionPane.showMessageDialog(null, "Có lỗi xảy ra. Vui long kiểm tra lại!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        else this.controller.refreshData();
     }//GEN-LAST:event_SearchActionPerformed
 
 

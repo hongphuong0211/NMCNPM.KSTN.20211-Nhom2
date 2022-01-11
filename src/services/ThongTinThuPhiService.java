@@ -39,7 +39,6 @@ public class ThongTinThuPhiService {
     public int tongTienMoiHoKhau(DotThuPhiBean dotThuPhi, HoKhauBean hoKhau) throws ClassNotFoundException, SQLException {
         int dotThuPhiId = dotThuPhi.getDotThuPhi().getID();
         int hoKhauId = hoKhau.getHoKhauModel().getID();
-        System.out.print(dotThuPhiId);
         Connection connection = MysqlConnection.getMysqlConnection();
         String query = "SELECT ma_dot_thu_phi, idHoKhau, SUM(so_tien) as Tong FROM thong_tin_thu_phi WHERE ma_dot_thu_phi = " 
                     + dotThuPhiId
@@ -51,7 +50,6 @@ public class ThongTinThuPhiService {
         ResultSet rs = preparedStatement.executeQuery();
         int result = 0;
         while (rs.next()){
-            System.out.print(rs.getInt("idHoKhau") + '\n');
             result = rs.getInt("Tong");
         }
         return result;

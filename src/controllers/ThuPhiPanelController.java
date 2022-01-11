@@ -70,8 +70,15 @@ public class ThuPhiPanelController {
         
     }
     
-    public void search(int id){
-        this.DotThuPhi = this.dotThuPhiService.getDotThuPhi(id);
+    public int search(int id){
+        DotThuPhiBean tmp = this.dotThuPhiService.getDotThuPhi(id);
+        if (tmp != null) {
+            this.DotThuPhi = tmp;
+            return 1;
+        }
+        else{
+            return 0;
+        }
     }
     
     public void initAction() {
@@ -151,11 +158,6 @@ public class ThuPhiPanelController {
     
     public void refreshData(){ 
         this.list = hoKhauService.getListHoKhau();
-        DotThuPhiModel dotThuPhiModel = new DotThuPhiModel();
-        dotThuPhiModel.setID(1);
-        dotThuPhiModel.setSoTienMoiNhanKhau(10);
-        dotThuPhiModel.setTenDotThuPhi("test1");
-        this.DotThuPhi.setDotThuPhi(dotThuPhiModel);
         setData();
         initAction();
     }
