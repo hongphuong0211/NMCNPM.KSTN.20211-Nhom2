@@ -93,6 +93,7 @@ public class HoKhauService {
                 hoKhauModel.setMaKhuVuc(rs.getString("maKhuVuc"));
                 hoKhauModel.setNgayLap(rs.getDate("ngayLap"));
                 hoKhauModel.setDiaChi(rs.getString("diaChi"));
+                hoKhauModel.setSoThanhVien(rs.getInt("soThanhVien"));
                 NhanKhauModel chuHo = temp.getChuHo();
                 chuHo.setID(rs.getInt("ID"));
                 chuHo.setHoTen(rs.getString("hoTen"));

@@ -27,7 +27,7 @@ public class DotThuPhiBean {
     }
 
     public DotThuPhiModel getDotThuPhi() {
-        return dotThuPhi;
+        return this.dotThuPhi;
     }
 
     public void setDotThuPhi(DotThuPhiModel dotThuPhi) {

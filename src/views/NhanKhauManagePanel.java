@@ -1,4 +1,4 @@
-package views;
+    package views;
 
 import controllers.NhanKhauManagerPanelController;
 import javax.swing.JFrame;

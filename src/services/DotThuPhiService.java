@@ -22,9 +22,9 @@ public class DotThuPhiService {
      //them moi dotthuphi
     public boolean addNew(DotThuPhiBean dotThuPhiBean) throws ClassNotFoundException, SQLException{
         Connection connection = MysqlConnection.getMysqlConnection();
-        String query = "INSERT INTO dot_thu_phi(ma_dot_thu_phi,so_tien_/1_nguoi, ten_dot_ung_ho, ngay_bat_dau, ngay_ket_thuc)" 
+        String query = "INSERT INTO dot_thu_phi(ma_dot_thu_phi,`so_tien_/1_nguoi`, ten_dot_thu_phi, ngay_bat_dau, ngay_ket_thuc)" 
                     + " values (?, ?, ?, ?, ?)";
-        PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setInt(1, dotThuPhiBean.getDotThuPhi().getID());
         preparedStatement.setInt(2, dotThuPhiBean.getDotThuPhi().getSoTienMoiNhanKhau());
         preparedStatement.setString(3, dotThuPhiBean.getDotThuPhi().getTenDotThuPhi());
@@ -39,25 +39,26 @@ public class DotThuPhiService {
   
     // chon dot thu phi theo id
     public DotThuPhiBean getDotThuPhi(int id) {
-        DotThuPhiBean dotThuPhiBean = new DotThuPhiBean();
+        DotThuPhiBean dotThuPhiBean = null;
         try{
             Connection connection = MysqlConnection.getMysqlConnection();
             String query = "SELECT * FROM dot_thu_phi WHERE ma_dot_thu_phi = " + id;
-            PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
+            PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = preparedStatement.executeQuery();
+            DotThuPhiModel thuPhi = new DotThuPhiModel();
             while (rs.next()) {
-                DotThuPhiModel thuPhi = new DotThuPhiModel();
                 thuPhi.setID(id);
                 thuPhi.setSoTienMoiNhanKhau(rs.getInt("so_tien_/1_nguoi"));
                 thuPhi.setTenDotThuPhi(rs.getString("ten_dot_thu_phi"));
                 thuPhi.setNgayBatDau(rs.getDate("ngay_bat_dau"));
                 thuPhi.setNgayKetThuc(rs.getDate("ngay_ket_thuc"));
             }
+            dotThuPhiBean = new DotThuPhiBean();
+            dotThuPhiBean.setDotThuPhi(thuPhi);
             preparedStatement.close();
         } catch(Exception e) {
             this.exceptionHandle(e.getMessage());
         }
-       
         return dotThuPhiBean;
     }
     private void exceptionHandle(String message) {

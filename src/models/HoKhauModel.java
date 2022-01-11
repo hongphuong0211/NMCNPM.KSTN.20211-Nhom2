@@ -16,7 +16,16 @@ public class HoKhauModel {
     private Date ngayChuyDi;
     private String lyDoChuyen;
     private int nguoiThucHien;
+    private int soThanhVien;
 
+    public int getSoThanhVien() {
+        return soThanhVien;
+    }
+    
+    public void setSoThanhVien(int soThanhVien) {
+        this.soThanhVien = soThanhVien;
+    }
+    
     public int getID() {
         return ID;
     }
@@ -28,7 +37,8 @@ public class HoKhauModel {
     public String getMaHoKhau() {
         return maHoKhau;
     }
-
+    
+    
     public void setMaHoKhau(String maHoKhau) {
         this.maHoKhau = maHoKhau;
     }
@@ -88,8 +98,6 @@ public class HoKhauModel {
     public void setNguoiThucHien(int nguoiThucHien) {
         this.nguoiThucHien = nguoiThucHien;
     }
-
-    public Boolean compareTo(HoKhauModel other) {
-        return this.ID == other.ID;
-    }
+    
+    
 }

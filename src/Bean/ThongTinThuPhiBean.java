@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Bean;
-
 import models.DotThuPhiModel;
 import models.HoKhauModel;
 import models.ThongTinThuPhiModel;
@@ -16,7 +15,21 @@ public class ThongTinThuPhiBean {
     private ThongTinThuPhiModel thongTinThuPhi;
     private HoKhauModel hoKhau;
     private DotThuPhiModel dotThuPhi;
+    
+    public ThongTinThuPhiBean() {
+        this.dotThuPhi = new DotThuPhiModel();
+        this.hoKhau = new HoKhauModel();
+        this.thongTinThuPhi = new ThongTinThuPhiModel();
+    }
 
+    public ThongTinThuPhiBean(ThongTinThuPhiModel thongTinThuPhi, HoKhauModel hoKhau, DotThuPhiModel dotThuPhi) {
+        this.thongTinThuPhi = thongTinThuPhi;
+        this.hoKhau = hoKhau;
+        this.dotThuPhi = dotThuPhi;
+    }
+
+    
+    
     public ThongTinThuPhiModel getThongTinThuPhi() {
         return thongTinThuPhi;
     }
@@ -41,5 +54,11 @@ public class ThongTinThuPhiBean {
         this.dotThuPhi = dotThuPhi;
     }
 
-   
+    @Override
+    public String toString() {
+        String res =  "<html><style>p {padding: 5px; margin-left: 20px} table, th, td {border: 1px solid black; border-collapse: collapse;} table {width: 500px}</style> <div>"
+                    + "";
+        return res;
+    }
+    
 }

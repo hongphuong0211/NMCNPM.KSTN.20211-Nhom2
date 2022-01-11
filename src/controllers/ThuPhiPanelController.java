@@ -1,6 +1,8 @@
 package controllers;
 
+import Bean.ThongTinThuPhiBean;
 import Bean.HoKhauBean;
+import Bean.DotThuPhiBean;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -17,28 +19,59 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import services.HoKhauService;
+import services.ThongTinThuPhiService;
+import services.DotThuPhiService;
 import utility.TableModelHoKhau;
+import utility.ThuPhiTableModel;
 import views.infoViews.InfoJframe;
+import models.DotThuPhiModel;
+import java.util.Date;  
+import java.text.SimpleDateFormat;  
+
 
 /**
  *
  * @author Hai
  */
-public class HoKhauPanelController {
+public class ThuPhiPanelController {
     private List<HoKhauBean> list;
     private JTextField searchJtf;
     private JPanel tableJpn;
     private final HoKhauService hoKhauService = new HoKhauService();
-    private final TableModelHoKhau tableModelHoKhau = new TableModelHoKhau();
-    private final String COLUNMS[] = {"Mã hộ khẩu", "Họ tên chủ hộ", "Địa chỉ"}; 
+    private final ThuPhiTableModel thuPhiTableModel = new ThuPhiTableModel();
+    private final String COLUNMS[] = {"Mã hộ khẩu", "Địa chỉ", "Số thành viên", "Số tiền"}; 
     private JFrame parentJFrame;
-
-    public HoKhauPanelController(JTextField searchJtf, JPanel tableJpn) {
+    private DotThuPhiBean DotThuPhi = new DotThuPhiBean();
+    private DotThuPhiService dotThuPhiService = new DotThuPhiService();
+    
+    public ThuPhiPanelController(JTextField searchJtf, JPanel tableJpn) {
         this.searchJtf = searchJtf;
         this.tableJpn = tableJpn;
         this.list = hoKhauService.getListHoKhau();
+//        DotThuPhiModel dotThuPhiModel = new DotThuPhiModel();
+//        dotThuPhiModel.setID(1);
+//        dotThuPhiModel.setSoTienMoiNhanKhau(10);
+//        dotThuPhiModel.setTenDotThuPhi("test1");
+//        this.DotThuPhi.setDotThuPhi(dotThuPhiModel);
+        
+        this.DotThuPhi = this.dotThuPhiService.getDotThuPhi(1);
         setData();
         initAction();
+        // them dot thu phi model
+//        try{
+//        String sDate1="0/09/1990";  
+//            Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
+//        }
+//        catch(Exception e){
+//        }
+//        dotThuPhiModel.setNgayBatDau("date1");
+//        dotThuPhiModel.setNgayKetThuc("1990-09-2");
+        
+        
+    }
+    
+    public void search(int id){
+        this.DotThuPhi = this.dotThuPhiService.getDotThuPhi(id);
     }
     
     public void initAction() {
@@ -79,7 +112,7 @@ public class HoKhauPanelController {
     }
 
     public void setData() {
-        DefaultTableModel model = tableModelHoKhau.setTableHoKhau(list, COLUNMS);
+        DefaultTableModel model = thuPhiTableModel.setTableThongTinThuPhi(DotThuPhi, list, COLUNMS);
         
         JTable table = new JTable(model) {
             @Override
@@ -115,7 +148,18 @@ public class HoKhauPanelController {
         tableJpn.validate();
         tableJpn.repaint();
     }
-
+    
+    public void refreshData(){ 
+        this.list = hoKhauService.getListHoKhau();
+        DotThuPhiModel dotThuPhiModel = new DotThuPhiModel();
+        dotThuPhiModel.setID(1);
+        dotThuPhiModel.setSoTienMoiNhanKhau(10);
+        dotThuPhiModel.setTenDotThuPhi("test1");
+        this.DotThuPhi.setDotThuPhi(dotThuPhiModel);
+        setData();
+        initAction();
+    }
+    
     public void setParentJFrame(JFrame parentJFrame) {
         this.parentJFrame = parentJFrame;
     }
