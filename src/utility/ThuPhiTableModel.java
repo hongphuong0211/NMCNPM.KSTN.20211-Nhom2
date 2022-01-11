@@ -53,6 +53,7 @@ public class ThuPhiTableModel {
         });
         return dtm;
     }
+   
     public DefaultTableModel setTableThongKeThuPhi(List<DotThuPhiBean> listItem, String[] listColumn) {
         final int columns = listColumn.length;
         DefaultTableModel dtm = new DefaultTableModel()  {
@@ -95,5 +96,5 @@ public class ThuPhiTableModel {
         });
         return dtm;
     }
-
+    
 }

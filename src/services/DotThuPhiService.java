@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import models.DotThuPhiModel;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -66,6 +68,33 @@ public class DotThuPhiService {
         
         return dotThuPhiBean;
     }
+    
+    public List<DotThuPhiBean> getListDotThuPhi() {
+        List<DotThuPhiBean> list = new ArrayList<>();
+        try {
+            Connection connection = MysqlConnection.getMysqlConnection();
+            String query = "SELECT * FROM dot_thu_phi";
+            PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                DotThuPhiBean dotThuPhiBean = new DotThuPhiBean();
+                DotThuPhiModel thuPhi = new DotThuPhiModel();
+                thuPhi.setID(rs.getInt("ma_dot_thu_phi"));
+                thuPhi.setSoTienMoiNhanKhau(rs.getInt("so_tien_/1_nguoi"));
+                thuPhi.setTenDotThuPhi(rs.getString("ten_dot_thu_phi"));
+                thuPhi.setNgayBatDau(rs.getDate("ngay_bat_dau"));
+                thuPhi.setNgayKetThuc(rs.getDate("ngay_ket_thuc"));
+                dotThuPhiBean.setDotThuPhi(thuPhi);
+                list.add(dotThuPhiBean);
+            }
+            preparedStatement.close();
+            connection.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return list;
+    }
+    
     private void exceptionHandle(String message) {
         JOptionPane.showMessageDialog(null, message, "Warning", JOptionPane.ERROR_MESSAGE);
     }

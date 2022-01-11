@@ -55,6 +55,7 @@ public class ThongTinThuPhiService {
         return result;
     }   
     
+    
     public int tongTienMoiDot(DotThuPhiBean dotThuPhi) throws ClassNotFoundException, SQLException {
         int dotThuPhiId = dotThuPhi.getDotThuPhi().getID();
         Connection connection = MysqlConnection.getMysqlConnection();
@@ -62,18 +63,33 @@ public class ThongTinThuPhiService {
                     + dotThuPhiId + " GROUP BY ma_dot_thu_phi;";
         PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
         ResultSet rs = preparedStatement.executeQuery();
-        return rs.getInt("Tong");
+         int result = 0;
+        while (rs.next()){
+            result = rs.getInt("Tong");
+        }
+        return result;
         
     }
     
-    public int SoHoKhauNopDuTien (DotThuPhiBean dotThuPhi) throws ClassNotFoundException, SQLException {
-        
-        return 1;
-        
+    public int SoHoKhauNopDuTien(DotThuPhiBean dotThuPhi) throws ClassNotFoundException, SQLException {
+        int dotThuPhiId = dotThuPhi.getDotThuPhi().getID();
+        Connection connection = MysqlConnection.getMysqlConnection();
+        String query = "SELECT COUNT(*) as Number\n" +
+            "FROM (SELECT ma_dot_thu_phi, idHoKhau, SUM(so_tien) as Tong\n" +
+            "    FROM thong_tin_thu_phi\n" +
+            "    WHERE ma_dot_thu_phi = " + dotThuPhiId + "\n" +
+            "    GROUP BY ma_dot_thu_phi, idHoKhau) as x, ho_khau as h, dot_thu_phi as d\n" +
+            "   	WHERE d.ma_dot_thu_phi = x.ma_dot_thu_phi AND h.ID = x.idHoKhau \n" +
+            "    	AND x.Tong >= h.soThanhVien * d.`so_tien_/1_nguoi`";
+        PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        ResultSet rs = preparedStatement.executeQuery();
+         int result = 0;
+        while (rs.next()){
+            System.out.print(rs.getInt("Number") + '\n');
+            result = rs.getInt("Number");
+        }
+        return result;
     }
-    
-    
-    
 
     
 }

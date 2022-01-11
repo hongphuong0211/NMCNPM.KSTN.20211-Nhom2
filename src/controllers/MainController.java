@@ -72,7 +72,7 @@ public class MainController {
                 case "DongGop":
                     view = new DongGopPanel(this.jfrMain);
                     break;
-                case "ThongKeTPDG":
+                case "ThongKeThuPhi":
                     view = new ThongKeTPDGPanel(this.jfrMain);
                     break;
                 default:
