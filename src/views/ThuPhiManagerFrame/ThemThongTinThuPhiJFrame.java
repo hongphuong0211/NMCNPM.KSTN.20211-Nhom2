@@ -6,8 +6,13 @@ package views.ThuPhiManagerFrame;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import services.MysqlConnection;
+import controllers.ThuPhiPanelController;
 
 /**
  *
@@ -19,7 +24,9 @@ public class ThemThongTinThuPhiJFrame extends javax.swing.JFrame {
      * Creates new form ThemDotThuPhi
      */
     private JFrame parentFrame;
-    public ThemThongTinThuPhiJFrame(JFrame parentFrame) {
+    private ThuPhiPanelController parentController;
+    public ThemThongTinThuPhiJFrame(JFrame parentFrame, ThuPhiPanelController parentController) {
+        this.parentController = parentController;
         this.parentFrame = parentFrame;
         this.parentFrame.setEnabled(false);
         initComponents();
@@ -54,9 +61,9 @@ public class ThemThongTinThuPhiJFrame extends javax.swing.JFrame {
         NgayThuPhi = new javax.swing.JLabel();
         SoTien = new javax.swing.JLabel();
         MaDotThuPhiText = new javax.swing.JTextField();
+        IDHoKhauText = new javax.swing.JTextField();
+        NgayThuPhiText = new javax.swing.JTextField();
         SoTienText = new javax.swing.JTextField();
-        TenDotThuPhiText = new javax.swing.JTextField();
-        NgayBatDauText = new javax.swing.JTextField();
         CancelButton = new javax.swing.JButton();
         CreateButton = new javax.swing.JButton();
 
@@ -74,9 +81,9 @@ public class ThemThongTinThuPhiJFrame extends javax.swing.JFrame {
         SoTien.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         SoTien.setText("Số Tiền");
 
-        SoTienText.addActionListener(new java.awt.event.ActionListener() {
+        IDHoKhauText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SoTienTextActionPerformed(evt);
+                IDHoKhauTextActionPerformed(evt);
             }
         });
 
@@ -108,9 +115,9 @@ public class ThemThongTinThuPhiJFrame extends javax.swing.JFrame {
                         .addGap(60, 60, 60)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(MaDotThuPhiText, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                            .addComponent(SoTienText)
-                            .addComponent(TenDotThuPhiText)
-                            .addComponent(NgayBatDauText)))
+                            .addComponent(IDHoKhauText)
+                            .addComponent(NgayThuPhiText)
+                            .addComponent(SoTienText)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addComponent(CancelButton)
@@ -130,15 +137,15 @@ public class ThemThongTinThuPhiJFrame extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(IDHoKhau)
-                    .addComponent(SoTienText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(IDHoKhauText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NgayThuPhi)
-                    .addComponent(TenDotThuPhiText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NgayThuPhiText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SoTien)
-                    .addComponent(NgayBatDauText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SoTienText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CancelButton)
@@ -149,14 +156,42 @@ public class ThemThongTinThuPhiJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SoTienTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SoTienTextActionPerformed
+    private void IDHoKhauTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDHoKhauTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SoTienTextActionPerformed
+    }//GEN-LAST:event_IDHoKhauTextActionPerformed
 
     private void CreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateButtonActionPerformed
         // TODO add your handling code here:
+        try {
+            Connection connection = MysqlConnection.getMysqlConnection();
+            String query = "INSERT INTO thong_tin_thu_phi(ma_dot_thu_phi, idHoKhau, ngay_thu_phi, so_tien)" 
+                        + " values (?, ?, NOW(), ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setInt(1, Integer.parseInt(MaDotThuPhiText.getText()));
+            preparedStatement.setInt(2, Integer.parseInt(IDHoKhauText.getText()));
+
+            preparedStatement.setInt(3, Integer.parseInt(SoTienText.getText()));
+            preparedStatement.executeUpdate();
+
+            preparedStatement.close();
+            connection.close();
+            close();
+            JOptionPane.showMessageDialog(null, "Thêm thành công!!");
+            close();
+            parentController.refreshData();
+        }
+        catch(Exception e){
+                JOptionPane.showMessageDialog(rootPane, "Có lỗi xảy ra. Vui long kiểm tra lại!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
         
     }//GEN-LAST:event_CreateButtonActionPerformed
+
+    private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
+        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null, "Are you sure to close this??","Confirm",JOptionPane.YES_NO_OPTION) == 0) {
+            close();
+        }
+    }//GEN-LAST:event_CancelButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,13 +200,13 @@ public class ThemThongTinThuPhiJFrame extends javax.swing.JFrame {
     private javax.swing.JButton CancelButton;
     private javax.swing.JButton CreateButton;
     private javax.swing.JLabel IDHoKhau;
+    private javax.swing.JTextField IDHoKhauText;
     private javax.swing.JLabel MaDotThuPhi;
     private javax.swing.JTextField MaDotThuPhiText;
-    private javax.swing.JTextField NgayBatDauText;
     private javax.swing.JLabel NgayThuPhi;
+    private javax.swing.JTextField NgayThuPhiText;
     private javax.swing.JLabel SoTien;
     private javax.swing.JTextField SoTienText;
-    private javax.swing.JTextField TenDotThuPhiText;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

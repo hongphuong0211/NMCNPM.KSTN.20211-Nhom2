@@ -40,9 +40,9 @@
                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="MaDotThuPhiText" alignment="0" pref="138" max="32767" attributes="0"/>
+                          <Component id="IDHoKhauText" alignment="0" max="32767" attributes="0"/>
+                          <Component id="NgayThuPhiText" alignment="0" max="32767" attributes="0"/>
                           <Component id="SoTienText" alignment="0" max="32767" attributes="0"/>
-                          <Component id="TenDotThuPhiText" alignment="0" max="32767" attributes="0"/>
-                          <Component id="NgayBatDauText" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -70,17 +70,17 @@
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="IDHoKhau" min="-2" max="-2" attributes="0"/>
-                  <Component id="SoTienText" min="-2" max="-2" attributes="0"/>
+                  <Component id="IDHoKhauText" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="NgayThuPhi" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="TenDotThuPhiText" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="NgayThuPhiText" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="SoTien" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="NgayBatDauText" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="SoTienText" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="64" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -129,14 +129,14 @@
     </Component>
     <Component class="javax.swing.JTextField" name="MaDotThuPhiText">
     </Component>
-    <Component class="javax.swing.JTextField" name="SoTienText">
+    <Component class="javax.swing.JTextField" name="IDHoKhauText">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SoTienTextActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IDHoKhauTextActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="TenDotThuPhiText">
+    <Component class="javax.swing.JTextField" name="NgayThuPhiText">
     </Component>
-    <Component class="javax.swing.JTextField" name="NgayBatDauText">
+    <Component class="javax.swing.JTextField" name="SoTienText">
     </Component>
     <Component class="javax.swing.JButton" name="CancelButton">
       <Properties>
