@@ -21,11 +21,10 @@ public class KhaiTuJFrame extends javax.swing.JFrame {
      */
     //private NhanKhauManager
     private JFrame parentJFrame = null;
-    private NhanKhauManagerPanelController parentController;
     private KhaiTuController controller;
+    private KhaiTuModel khaiTuModel = new KhaiTuModel();
     
-    public KhaiTuJFrame(NhanKhauManagerPanelController parentController, JFrame parentJFrame) {
-        this.parentController = parentController;
+    public KhaiTuJFrame(JFrame parentJFrame) {
         this.parentJFrame = parentJFrame;
         this.parentJFrame.setEnabled(false);
         initComponents();
@@ -47,13 +46,16 @@ public class KhaiTuJFrame extends javax.swing.JFrame {
             public void keyPressed(KeyEvent e) {
                 // neu keycode == 10 ~ enter
                 if (e.getKeyCode() == 10) {
-                    checkCMT();
+                    checkCMTNguoiKhai();
                 }
             }
         });
     }
-    
-    private void checkCMT() {
+    private boolean validateForm() {
+        return !(soGiayKhaiTu.getText().trim().isEmpty()
+                || lyDojtf.getText().trim().isEmpty());
+    }
+    private void checkCMTNguoiKhai() {
         String tempCMT = this.soCMTNguoiKhaijtf.getText().trim() ;
         if (tempCMT.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Vui lòng nhập So CMT", "Warning!!", JOptionPane.WARNING_MESSAGE);
@@ -71,8 +73,39 @@ public class KhaiTuJFrame extends javax.swing.JFrame {
             // khong cho phep sua lai gia tri
             this.soCMTNguoiKhaijtf.setEditable(false);
             this.availableIconNguoiKhai.setEnabled(true);
+            this.soCMTNguoiChetjtf.setEditable(true);
+            this.khaiTuModel.setIdNguoiKhai(tempID);
+            JOptionPane.showMessageDialog(this, "OK!!");
+        } else {
+            if (JOptionPane.showConfirmDialog(null, "Không tìm thấy nhân khẩu trong hệ thống!! Thử lại?", "Warning!!", JOptionPane.OK_CANCEL_OPTION) != 0) {
+                close();
+            }
+        }
+    }
+    
+    private void checkCMTNguoiChet() {
+        String tempCMT = this.soCMTNguoiChetjtf.getText().trim() ;
+        if (tempCMT.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập So CMT", "Warning!!", JOptionPane.WARNING_MESSAGE);
+            return;
+        } else {
+            try {
+                long cmt = Long.parseLong(tempCMT);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Vui lòng nhập So CMT đúng định dạng!", "Warning!!", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        }
+        int tempID = controller.checkCMT(this.soCMTNguoiChetjtf.getText());
+        if( tempID != -1){
+            this.soCMTNguoiChetjtf.setEditable(false);
+            this.availableIconNguoiChet.setEnabled(true);
             this.soGiayKhaiTu.setEnabled(true);
-            
+            this.ngayKhaiCld.setEnabled(true);
+            this.ngayChetCld.setEnabled(true);
+            this.lyDojtf.setEnabled(true);
+            this.lyDojtf.setEditable(true);
+            this.khaiTuModel.setIdNguoiChet(tempID);
             JOptionPane.showMessageDialog(this, "OK!!");
         } else {
             if (JOptionPane.showConfirmDialog(null, "Không tìm thấy nhân khẩu trong hệ thống!! Thử lại?", "Warning!!", JOptionPane.OK_CANCEL_OPTION) != 0) {
@@ -103,7 +136,7 @@ public class KhaiTuJFrame extends javax.swing.JFrame {
         soCMTNguoiKhaijtf = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         soGiayKhaiTu = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        acceptButton = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         ngayKhaiCld = new com.toedter.calendar.JDateChooser();
@@ -111,7 +144,7 @@ public class KhaiTuJFrame extends javax.swing.JFrame {
         ngayChetCld = new com.toedter.calendar.JDateChooser();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        lyDojtf = new javax.swing.JTextArea();
         checkNguoiKhaibt = new javax.swing.JButton();
         availableIconNguoiKhai = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -142,7 +175,12 @@ public class KhaiTuJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Xác nhận");
+        acceptButton.setText("Xác nhận");
+        acceptButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acceptButtonActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Hủy");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -164,11 +202,11 @@ public class KhaiTuJFrame extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setText("Lý do chết:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextArea1.setRows(5);
-        jTextArea1.setEnabled(false);
-        jScrollPane1.setViewportView(jTextArea1);
+        lyDojtf.setColumns(20);
+        lyDojtf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lyDojtf.setRows(5);
+        lyDojtf.setEnabled(false);
+        jScrollPane1.setViewportView(lyDojtf);
 
         checkNguoiKhaibt.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         checkNguoiKhaibt.setText("Check");
@@ -215,7 +253,7 @@ public class KhaiTuJFrame extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(acceptButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -290,7 +328,7 @@ public class KhaiTuJFrame extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
+                    .addComponent(acceptButton)
                     .addComponent(jButton3))
                 .addContainerGap())
         );
@@ -310,7 +348,7 @@ public class KhaiTuJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void checkNguoiKhaibtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkNguoiKhaibtActionPerformed
-        
+        this.checkCMTNguoiKhai();
     }//GEN-LAST:event_checkNguoiKhaibtActionPerformed
 
     private void soGiayKhaiTuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soGiayKhaiTuActionPerformed
@@ -322,7 +360,7 @@ public class KhaiTuJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void checkNguoiChetbtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkNguoiChetbtActionPerformed
-        // TODO add your handling code here:
+        this.checkCMTNguoiChet();
     }//GEN-LAST:event_checkNguoiChetbtActionPerformed
 
     private void soCMTNguoiKhaijtfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soCMTNguoiKhaijtfActionPerformed
@@ -333,12 +371,28 @@ public class KhaiTuJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_soCMTNguoiChetjtfActionPerformed
 
+    private void acceptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptButtonActionPerformed
+        if (!validateForm()) {
+            JOptionPane.showMessageDialog(null, "Vui lòng nhập hết các trường bắt buộc!", "Warning!!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            this.khaiTuModel.setSoGiayKhaiTu(this.soGiayKhaiTu.getText().trim());
+            this.khaiTuModel.setNgayKhai(ngayKhaiCld.getDate());
+            this.khaiTuModel.setNgayChet(ngayChetCld.getDate());
+            this.khaiTuModel.setLyDoChet(this.lyDojtf.getText().trim());
+            
+            if (this.controller.addNew(this.khaiTuModel)) {
+                JOptionPane.showMessageDialog(null, "Thêm thành công.");
+            }
+            close();
+        }
+    }//GEN-LAST:event_acceptButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton acceptButton;
     private javax.swing.JLabel availableIconNguoiChet;
     private javax.swing.JLabel availableIconNguoiKhai;
     private javax.swing.JButton checkNguoiChetbt;
     private javax.swing.JButton checkNguoiKhaibt;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -348,7 +402,7 @@ public class KhaiTuJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea lyDojtf;
     private com.toedter.calendar.JDateChooser ngayChetCld;
     private com.toedter.calendar.JDateChooser ngayKhaiCld;
     private javax.swing.JTextField soCMTNguoiChetjtf;
