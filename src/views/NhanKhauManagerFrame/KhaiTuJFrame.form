@@ -64,9 +64,9 @@
                                       </Group>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jDateChooser1" max="32767" attributes="0"/>
-                                      <Component id="jTextField2" max="32767" attributes="0"/>
-                                      <Component id="jDateChooser2" max="32767" attributes="0"/>
+                                      <Component id="ngayKhaiCld" max="32767" attributes="0"/>
+                                      <Component id="soGiayKhaiTu" max="32767" attributes="0"/>
+                                      <Component id="ngayChetCld" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -82,25 +82,25 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jTextField1" min="-2" pref="274" max="-2" attributes="0"/>
+                                  <Component id="soCMTNguoiKhaijtf" min="-2" pref="274" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="13" max="32767" attributes="0"/>
-                                  <Component id="jTextField3" min="-2" pref="274" max="-2" attributes="0"/>
+                                  <Component id="soCMTNguoiChetjtf" min="-2" pref="274" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="checkNguoiKhaibt" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="availableIconNguoiKhai" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                                  <Component id="checkNguoiChetbt" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                  <Component id="availableIconNguoiChet" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
@@ -115,31 +115,31 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jTextField1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="soCMTNguoiKhaijtf" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="checkNguoiKhaibt" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="availableIconNguoiKhai" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel7" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jTextField3" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jButton4" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="soCMTNguoiChetjtf" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="checkNguoiChetbt" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="availableIconNguoiChet" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="34" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jTextField2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="soGiayKhaiTu" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel4" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jDateChooser1" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="ngayKhaiCld" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel5" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jDateChooser2" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="ngayChetCld" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -165,12 +165,15 @@
             <Property name="text" type="java.lang.String" value="S&#x1ed1; CMT ng&#x1b0;&#x1edd;i khai:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="soCMTNguoiKhaijtf">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="14" style="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="soCMTNguoiKhaijtfActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
@@ -180,7 +183,7 @@
             <Property name="text" type="java.lang.String" value="S&#x1ed1; gi&#x1ea5;y khai t&#x1eed;:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="soGiayKhaiTu">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="14" style="0"/>
@@ -188,7 +191,7 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="soGiayKhaiTuActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
@@ -212,7 +215,7 @@
             <Property name="text" type="java.lang.String" value="Ng&#xe0;y khai:"/>
           </Properties>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+        <Component class="com.toedter.calendar.JDateChooser" name="ngayKhaiCld">
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
@@ -225,7 +228,7 @@
             <Property name="text" type="java.lang.String" value="Ng&#xe0;y ch&#x1ebf;t:"/>
           </Properties>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser2">
+        <Component class="com.toedter.calendar.JDateChooser" name="ngayChetCld">
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
@@ -257,7 +260,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="checkNguoiKhaibt">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="14" style="0"/>
@@ -265,10 +268,10 @@
             <Property name="text" type="java.lang.String" value="Check"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkNguoiKhaibtActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="availableIconNguoiKhai">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Icons/checked.png"/>
@@ -284,14 +287,17 @@
             <Property name="text" type="java.lang.String" value="S&#x1ed1; CMT ng&#x1b0;&#x1edd;i ch&#x1ebf;t:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField3">
+        <Component class="javax.swing.JTextField" name="soCMTNguoiChetjtf">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="14" style="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="soCMTNguoiChetjtfActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton4">
+        <Component class="javax.swing.JButton" name="checkNguoiChetbt">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="14" style="0"/>
@@ -299,10 +305,10 @@
             <Property name="text" type="java.lang.String" value="Check"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkNguoiChetbtActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel8">
+        <Component class="javax.swing.JLabel" name="availableIconNguoiChet">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Icons/checked.png"/>

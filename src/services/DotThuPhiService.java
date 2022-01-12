@@ -73,7 +73,7 @@ public class DotThuPhiService {
         List<DotThuPhiBean> list = new ArrayList<>();
         try {
             Connection connection = MysqlConnection.getMysqlConnection();
-            String query = "SELECT * FROM dot_thu_phi";
+            String query = "SELECT * FROM dot_thu_phi ORDER BY ngay_bat_dau DESC";
             PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()){
@@ -91,6 +91,54 @@ public class DotThuPhiService {
             connection.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        }
+        return list;
+    }
+    
+    /*
+     * ham tim kiem dot thu phi theo ten
+     */
+    public List<DotThuPhiBean> search(String keyword) {
+        List<DotThuPhiBean> list = new  ArrayList<>();
+        String query;
+        if (keyword.trim().isEmpty()) {
+            return this.getListDotThuPhi();
+        }
+        // truy cap db
+        // create query
+        try {
+            int a = Integer.parseInt(keyword);
+            query = "SELECT * "
+                    + "FROM dot_thu_phi "
+                    + "WHERE dot_thu_phi.ma_dot_thu_phi = "
+                    + keyword;
+        } catch (Exception e) {
+            query = "SELECT * "
+                    + "FROM dot_thu_phi "
+                    + "WHERE ten_dot_thu_phi like '"
+                    + keyword
+                    + "';";
+        }
+        
+        // execute query
+        try {
+            Connection connection = MysqlConnection.getMysqlConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                DotThuPhiModel dotThuPhi = new DotThuPhiModel();
+                dotThuPhi.setID(rs.getInt("ma_dot_thu_phi"));
+                dotThuPhi.setTenDotThuPhi(rs.getString("ten_dot_thu_phi"));
+                dotThuPhi.setNgayBatDau(rs.getDate("ngay_bat_dau"));
+                dotThuPhi.setNgayKetThuc(rs.getDate("ngay_ket_thuc"));
+                dotThuPhi.setSoTienMoiNhanKhau(rs.getInt("so_tien_/1_nguoi"));
+                DotThuPhiBean dotThuPhiBean = new DotThuPhiBean(dotThuPhi);
+                list.add(dotThuPhiBean);
+            }
+            preparedStatement.close();
+            connection.close();
+        } catch (Exception mysqlException) {
+            this.exceptionHandle(mysqlException.getMessage());
         }
         return list;
     }

@@ -4,11 +4,13 @@
  */
 package views;
 
+import Bean.DotThuPhiBean;
 import controllers.HoKhauPanelController;
 import javax.swing.JFrame;
 import views.NhanKhauManagerFrame.AddNewPeopleJFrame;
 import views.NhanKhauManagerFrame.DangKyTamVangJFrame;
 import views.ThuPhiManagerFrame.ThemThongTinThuPhiJFrame;
+import views.ThuPhiManagerFrame.ChooseDotThuPhi;
 import views.ThuPhiManagerFrame.TaoMoiDotThuPhiJFrame;
 import controllers.ThuPhiPanelController;
 import javax.swing.JOptionPane;
@@ -22,7 +24,7 @@ public class ThuPhiPanel extends javax.swing.JPanel {
     /**
      * Creates new form ThuPhiPanel
      */
-    
+    private DotThuPhiBean dotThuPhi;
     private ThuPhiPanelController controller = null;
     private JFrame parentJFrame;
     
@@ -32,6 +34,13 @@ public class ThuPhiPanel extends javax.swing.JPanel {
         controller = new ThuPhiPanelController(NhapDotThuPhiText, tablePanel);
         controller.setParentJFrame(parentFrame);
     }
+    public void setDataThuPhi(String tenDotThuPhi){
+        if(tenDotThuPhi.isEmpty()) return;
+        NhapDotThuPhiText.setText(tenDotThuPhi);
+        if(this.controller.search(NhapDotThuPhiText.getText(), jLabel1) == 0)   return;
+        this.controller.refreshData();
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,6 +59,7 @@ public class ThuPhiPanel extends javax.swing.JPanel {
         NhapDotThuPhiLabel = new javax.swing.JLabel();
         Search = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        ChonDotThuPhi = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -95,8 +105,8 @@ public class ThuPhiPanel extends javax.swing.JPanel {
         NhapDotThuPhiLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         NhapDotThuPhiLabel.setText("Nhập đợt thu phí:");
 
-        Search.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        Search.setText("Search");
+        Search.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Search.setText("Tìm kiếm");
         Search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SearchActionPerformed(evt);
@@ -104,6 +114,16 @@ public class ThuPhiPanel extends javax.swing.JPanel {
         });
 
         jLabel1.setText("N/A");
+
+        ChonDotThuPhi.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        ChonDotThuPhi.setText("Chọn");
+        ChonDotThuPhi.setMaximumSize(new java.awt.Dimension(77, 27));
+        ChonDotThuPhi.setMinimumSize(new java.awt.Dimension(77, 27));
+        ChonDotThuPhi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChonDotThuPhiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -120,14 +140,16 @@ public class ThuPhiPanel extends javax.swing.JPanel {
                                 .addComponent(NhapDotThuPhiLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(NhapDotThuPhiText, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(Search))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addComponent(jLabel1)))
-                        .addGap(0, 260, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Search)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ChonDotThuPhi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 173, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(GhiNhanBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -145,7 +167,8 @@ public class ThuPhiPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NhapDotThuPhiText, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NhapDotThuPhiLabel)
-                    .addComponent(Search))
+                    .addComponent(Search)
+                    .addComponent(ChonDotThuPhi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -178,17 +201,25 @@ public class ThuPhiPanel extends javax.swing.JPanel {
         themThongTinThuPhiJFrame.setVisible(true);
     }//GEN-LAST:event_GhiNhanBtnActionPerformed
 
+    private void ChonDotThuPhiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChonDotThuPhiActionPerformed
+        ChooseDotThuPhi chooseDotThuPhi = new ChooseDotThuPhi(this.dotThuPhi, this);
+        chooseDotThuPhi.setLocationRelativeTo(null);
+        chooseDotThuPhi.setResizable(false);
+        chooseDotThuPhi.setVisible(true);
+    }//GEN-LAST:event_ChonDotThuPhiActionPerformed
+
     private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
         // TODO add your handling code here:
-        
-        if (this.controller.search(Integer.parseInt(NhapDotThuPhiText.getText()), jLabel1) == 0){
+
+        if ((this.controller.search(NhapDotThuPhiText.getText(), jLabel1) == 0) && (this.controller.search(Integer.parseInt(NhapDotThuPhiText.getText()), jLabel1) == 0)){
             JOptionPane.showMessageDialog(null, "Có lỗi xảy ra. Vui long kiểm tra lại!!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
         else this.controller.refreshData();
     }//GEN-LAST:event_SearchActionPerformed
-
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ChonDotThuPhi;
     private javax.swing.JButton GhiNhanBtn;
     private javax.swing.JLabel NhapDotThuPhiLabel;
     private javax.swing.JTextField NhapDotThuPhiText;

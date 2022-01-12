@@ -96,5 +96,30 @@ public class ThuPhiTableModel {
         });
         return dtm;
     }
-    
+    public DefaultTableModel setTableThuPhi(List<DotThuPhiBean> listItem, String[] listColumn) {
+        final int columns = listColumn.length;
+        DefaultTableModel dtm = new DefaultTableModel()  {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return super.isCellEditable(row, column); //To change body of generated methods, choose Tools | Templates.
+            }
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+                return columnIndex == 5 ? Boolean.class : String.class;
+            }
+        };
+        ThongTinThuPhiService service = new ThongTinThuPhiService();
+        dtm.setColumnIdentifiers(listColumn);
+        Object[] obj;
+        obj = new Object[columns];
+        listItem.forEach((DotThuPhiBean item) -> { 
+            obj[0] = item.getDotThuPhi().getID();
+            obj[1] = item.getDotThuPhi().getTenDotThuPhi();
+            obj[2] = item.getDotThuPhi().getSoTienMoiNhanKhau();
+            obj[3] = item.getDotThuPhi().getNgayBatDau();
+            obj[4] = item.getDotThuPhi().getNgayKetThuc();
+            dtm.addRow(obj);
+        });
+        return dtm;
+    }
 }

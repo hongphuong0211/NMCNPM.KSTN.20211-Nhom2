@@ -93,5 +93,31 @@ public class DongGopTableModel {
         });
         return dtm;
     }
+     
+     public DefaultTableModel setTableDongGop(List<DotDongGopBean> listItem, String[] listColumn) {
+        final int columns = listColumn.length;
+        DefaultTableModel dtm = new DefaultTableModel()  {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return super.isCellEditable(row, column); //To change body of generated methods, choose Tools | Templates.
+            }
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+                return columnIndex == 4 ? Boolean.class : String.class;
+            }
+        };
+        ThongTinDongGopService service = new ThongTinDongGopService();
+        dtm.setColumnIdentifiers(listColumn);
+        Object[] obj;
+        obj = new Object[columns];
+        listItem.forEach((DotDongGopBean item) -> { 
+            obj[0] = item.getDotDongGop().getID();
+            obj[1] = item.getDotDongGop().getTenDotDongGop();           
+            obj[2] = item.getDotDongGop().getNgayBatDau();
+            obj[3] = item.getDotDongGop().getNgayKetThuc();          
+            dtm.addRow(obj);
+        });
+        return dtm;
+    }
     
 }

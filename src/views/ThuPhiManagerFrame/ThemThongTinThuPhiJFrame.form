@@ -27,32 +27,33 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="MaDotThuPhi" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="IDHoKhau" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="NgayThuPhi" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="SoTien" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="IDHoKhau" max="32767" attributes="0"/>
+                          <Component id="SoTien" alignment="0" max="32767" attributes="0"/>
+                          <Component id="MaDotThuPhi" alignment="0" max="32767" attributes="0"/>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="MaDotThuPhiText" alignment="0" pref="138" max="32767" attributes="0"/>
+                          <Component id="MaDotThuPhiText" max="32767" attributes="0"/>
                           <Component id="IDHoKhauText" alignment="0" max="32767" attributes="0"/>
-                          <Component id="NgayThuPhiText" alignment="0" max="32767" attributes="0"/>
-                          <Component id="SoTienText" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="CreateButton" min="-2" max="-2" attributes="0"/>
+                                  <Component id="SoTienText" min="-2" pref="126" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jTextField1" min="-2" pref="41" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                       <Component id="CancelButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-                      <Component id="CreateButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="69" max="32767" attributes="0"/>
+              <EmptySpace pref="34" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -68,21 +69,19 @@
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="IDHoKhau" min="-2" max="-2" attributes="0"/>
-                  <Component id="IDHoKhauText" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="IDHoKhauText" max="32767" attributes="0"/>
+                  <Component id="IDHoKhau" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="NgayThuPhi" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="NgayThuPhiText" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="SoTienText" alignment="3" max="32767" attributes="0"/>
+                      <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="SoTien" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="SoTien" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="SoTienText" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="64" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CancelButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="CreateButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -111,14 +110,6 @@
         <Property name="text" type="java.lang.String" value="ID H&#x1ed9; Kh&#x1ea9;u"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="NgayThuPhi">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Lucida Grande" size="13" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Ng&#xe0;y Thu Ph&#xed;"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="SoTien">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -134,8 +125,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IDHoKhauTextActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="NgayThuPhiText">
-    </Component>
     <Component class="javax.swing.JTextField" name="SoTienText">
     </Component>
     <Component class="javax.swing.JButton" name="CancelButton">
@@ -149,6 +138,16 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreateButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextField1">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="VND"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

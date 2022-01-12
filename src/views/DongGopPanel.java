@@ -4,6 +4,7 @@
  */
 package views;
 
+import Bean.DotDongGopBean;
 import controllers.HoKhauPanelController;
 import javax.swing.JFrame;
 import views.NhanKhauManagerFrame.AddNewPeopleJFrame;
@@ -12,6 +13,7 @@ import views.DongGopManagerFrame.ThemThongTinDongGopJFrame;
 import views.DongGopManagerFrame.TaoMoiDotDongGopJFrame;
 import controllers.DongGopPanelController;
 import javax.swing.JOptionPane;
+import views.DongGopManagerFrame.ChooseDotDongGop;
 
 /**
  *
@@ -22,7 +24,7 @@ public class DongGopPanel extends javax.swing.JPanel {
     /**
      * Creates new form ThuPhiPanel
      */
-    
+    private DotDongGopBean dotDongGop;
     private DongGopPanelController controller = null;
     private JFrame parentJFrame;
     
@@ -32,7 +34,12 @@ public class DongGopPanel extends javax.swing.JPanel {
         controller = new DongGopPanelController(NhapDotThuPhiText, tablePanel);
         controller.setParentJFrame(parentFrame);
     }
-
+    public void setDataDongGop(String tenDotDongGop){
+        if(tenDotDongGop.isEmpty()) return;
+        NhapDotThuPhiText.setText(tenDotDongGop);
+        if(this.controller.search(NhapDotThuPhiText.getText()) == 0)   return;
+        this.controller.refreshData();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,6 +55,7 @@ public class DongGopPanel extends javax.swing.JPanel {
         NhapDotThuPhiText = new javax.swing.JTextField();
         NhapDotThuPhiLabel = new javax.swing.JLabel();
         Search = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -90,11 +98,19 @@ public class DongGopPanel extends javax.swing.JPanel {
         NhapDotThuPhiLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         NhapDotThuPhiLabel.setText("Nhập đợt đóng góp:");
 
-        Search.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        Search.setText("Search");
+        Search.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Search.setText("Tìm kiếm");
         Search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SearchActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButton1.setText("Chọn");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -112,7 +128,9 @@ public class DongGopPanel extends javax.swing.JPanel {
                         .addComponent(NhapDotThuPhiText, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Search)
-                        .addGap(0, 260, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addGap(0, 162, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(GhiNhanBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,7 +144,8 @@ public class DongGopPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NhapDotThuPhiText, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NhapDotThuPhiLabel)
-                    .addComponent(Search))
+                    .addComponent(Search)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -168,6 +187,13 @@ public class DongGopPanel extends javax.swing.JPanel {
         else this.controller.refreshData();
     }//GEN-LAST:event_SearchActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ChooseDotDongGop chooseDotDongGop = new ChooseDotDongGop(this.dotDongGop, this);
+        chooseDotDongGop.setLocationRelativeTo(null);
+        chooseDotDongGop.setResizable(false);
+        chooseDotDongGop.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton GhiNhanBtn;
@@ -175,6 +201,7 @@ public class DongGopPanel extends javax.swing.JPanel {
     private javax.swing.JTextField NhapDotThuPhiText;
     private javax.swing.JButton Search;
     private javax.swing.JButton TaoMoiBtn;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel tablePanel;
     // End of variables declaration//GEN-END:variables
 }

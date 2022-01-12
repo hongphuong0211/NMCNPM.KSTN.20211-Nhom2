@@ -75,19 +75,65 @@ public class DotDongGopService {
             PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()){
-                DotDongGopBean dotDongGopBean = new DotDongGopBean();
-                DotDongGopModel thuPhi = new DotDongGopModel();
-                thuPhi.setID(rs.getInt("ma_dot_ung_ho"));
-                thuPhi.setTenDotDongGop(rs.getString("ten_dot_ung_ho"));
-                thuPhi.setNgayBatDau(rs.getDate("ngay_bat_dau"));
-                thuPhi.setNgayKetThuc(rs.getDate("ngau_ket_thuc"));
-                dotDongGopBean.setDotDongGop(thuPhi);
+                DotDongGopModel donggop = new DotDongGopModel();
+                donggop.setID(rs.getInt("ma_dot_ung_ho"));
+                donggop.setTenDotDongGop(rs.getString("ten_dot_ung_ho"));
+                donggop.setNgayBatDau(rs.getDate("ngay_bat_dau"));
+                donggop.setNgayKetThuc(rs.getDate("ngau_ket_thuc"));
+                DotDongGopBean dotDongGopBean = new DotDongGopBean(donggop);
                 list.add(dotDongGopBean);
             }
             preparedStatement.close();
             connection.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        }
+        return list;
+    }
+     
+     /*
+     * ham tim kiem dot thu phi theo ten
+     */
+    public List<DotDongGopBean> search(String keyword) {
+        List<DotDongGopBean> list = new  ArrayList<>();
+        String query;
+        if (keyword.trim().isEmpty()) {
+            return this.getListDotDongGop();
+        }
+        // truy cap db
+        // create query
+        try {
+            int a = Integer.parseInt(keyword);
+            query = "SELECT * "
+                    + "FROM dot_ung_ho "
+                    + "WHERE dot_ung_ho.ma_dot_ung_ho = "
+                    + keyword;
+        } catch (Exception e) {
+            query = "SELECT * "
+                    + "FROM dot_ung_ho "
+                    + "WHERE ten_dot_ung_ho like '"
+                    + keyword
+                    + "';";
+        }
+        
+        // execute query
+        try {
+            Connection connection = MysqlConnection.getMysqlConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                DotDongGopModel donggop = new DotDongGopModel();
+                donggop.setID(rs.getInt("ma_dot_ung_ho"));
+                donggop.setTenDotDongGop(rs.getString("ten_dot_ung_ho"));
+                donggop.setNgayBatDau(rs.getDate("ngay_bat_dau"));
+                donggop.setNgayKetThuc(rs.getDate("ngau_ket_thuc"));
+                DotDongGopBean dotDongGopBean = new DotDongGopBean(donggop);
+                list.add(dotDongGopBean);
+            }
+            preparedStatement.close();
+            connection.close();
+        } catch (Exception mysqlException) {
+            this.exceptionHandle(mysqlException.getMessage());
         }
         return list;
     }

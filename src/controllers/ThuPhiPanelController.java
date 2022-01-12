@@ -81,6 +81,17 @@ public class ThuPhiPanelController {
         }
     }
     
+    public int search(String tenDot, JLabel SoTienMoiNhanKhauText){
+        List<DotThuPhiBean> tmp = this.dotThuPhiService.search(tenDot);
+        if(tmp != null && !tmp.isEmpty()){
+            this.DotThuPhi = tmp.get(0);
+            SoTienMoiNhanKhauText.setText(String.valueOf(this.DotThuPhi.getDotThuPhi().getSoTienMoiNhanKhau()));
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+    
     public void initAction() {
         this.searchJtf.getDocument().addDocumentListener(new DocumentListener() {
             @Override

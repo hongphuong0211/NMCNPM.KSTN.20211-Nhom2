@@ -79,6 +79,15 @@ public class DongGopPanelController {
             return 0;
         }
     }
+    public int search(String tenDot){
+        List<DotDongGopBean> tmp = this.dotDongGopService.search(tenDot);
+        if(tmp != null && !tmp.isEmpty()){
+            this.DotDongGop = tmp.get(0);
+            return 1;
+        }else{
+            return 0;
+        }
+    }
     
     public void initAction() {
         this.searchJtf.getDocument().addDocumentListener(new DocumentListener() {
