@@ -66,11 +66,11 @@ public class TaoMoiDotThuPhiJFrame extends javax.swing.JFrame {
         MaDotThuPhiText = new javax.swing.JTextField();
         TenDotThuPhiText = new javax.swing.JTextField();
         SoTienText = new javax.swing.JTextField();
-        NgayBatDauText = new javax.swing.JTextField();
         CancelButton = new javax.swing.JButton();
         CreateButton = new javax.swing.JButton();
         NgayKetThuc = new javax.swing.JLabel();
-        NgayKetThucText = new javax.swing.JTextField();
+        ngayKetThucJdc = new com.toedter.calendar.JDateChooser();
+        ngayBatDauJdc = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,12 +92,6 @@ public class TaoMoiDotThuPhiJFrame extends javax.swing.JFrame {
             }
         });
 
-        NgayBatDauText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NgayBatDauTextActionPerformed(evt);
-            }
-        });
-
         CancelButton.setText("Cancel");
 
         CreateButton.setText("Create");
@@ -110,36 +104,40 @@ public class TaoMoiDotThuPhiJFrame extends javax.swing.JFrame {
         NgayKetThuc.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         NgayKetThuc.setText("Ngày kết thúc");
 
+        ngayKetThucJdc.setEnabled(false);
+
+        ngayBatDauJdc.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(MaDotThuPhi)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel1))
-                            .addComponent(TenDotThuPhi)
-                            .addComponent(SoTien)
-                            .addComponent(NgayBatDau)
-                            .addComponent(NgayKetThuc))
-                        .addGap(60, 60, 60)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(MaDotThuPhiText, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                            .addComponent(TenDotThuPhiText)
-                            .addComponent(SoTienText)
-                            .addComponent(NgayBatDauText)
-                            .addComponent(NgayKetThucText)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(CancelButton)
-                        .addGap(63, 63, 63)
-                        .addComponent(CreateButton)))
-                .addContainerGap(69, Short.MAX_VALUE))
+                        .addComponent(MaDotThuPhi)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1))
+                    .addComponent(SoTien)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(NgayBatDau, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(TenDotThuPhi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(NgayKetThuc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(ngayBatDauJdc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(MaDotThuPhiText, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                    .addComponent(TenDotThuPhiText, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(SoTienText, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ngayKetThucJdc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(CancelButton)
+                .addGap(63, 63, 63)
+                .addComponent(CreateButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,14 +157,16 @@ public class TaoMoiDotThuPhiJFrame extends javax.swing.JFrame {
                     .addComponent(SoTien)
                     .addComponent(SoTienText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NgayBatDau)
-                    .addComponent(NgayBatDauText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(NgayBatDau, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ngayBatDauJdc, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(NgayKetThuc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ngayKetThucJdc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 5, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NgayKetThuc)
-                    .addComponent(NgayKetThucText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CancelButton)
                     .addComponent(CreateButton))
@@ -185,20 +185,22 @@ public class TaoMoiDotThuPhiJFrame extends javax.swing.JFrame {
         try {
             Connection connection = MysqlConnection.getMysqlConnection();
             String query = "INSERT INTO dot_thu_phi(ma_dot_thu_phi, ten_dot_thu_phi, `so_tien_/1_nguoi`, ngay_bat_dau, ngay_ket_thuc)" 
-                        + " values (?, ?, ?, NOW(), ?)";
+                        + " values (?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1, Integer.parseInt(MaDotThuPhiText.getText()));
             preparedStatement.setString(2, TenDotThuPhiText.getText());
             preparedStatement.setInt(3, Integer.parseInt(SoTienText.getText()));
-            try{
-                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                Date parsed = format.parse(NgayKetThucText.getText());
-                java.sql.Date sql = new java.sql.Date(parsed.getTime());
-                preparedStatement.setDate(4, sql);
-            }
-            catch(Exception e){
-                
-            }
+            preparedStatement.setDate(4, new java.sql.Date(this.ngayBatDauJdc.getDate().getTime()));
+            preparedStatement.setDate(5, new java.sql.Date(this.ngayKetThucJdc.getDate().getTime()));
+//            try{
+//                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+//                Date parsed = format.parse(NgayKetThucText.getText());
+//                java.sql.Date sql = new java.sql.Date(parsed.getTime());
+//                preparedStatement.setDate(4, sql);
+//            }
+//            catch(Exception e){
+//                
+//            }
             preparedStatement.executeUpdate();
 
             preparedStatement.close();
@@ -222,10 +224,6 @@ public class TaoMoiDotThuPhiJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_CancelButtonActionPerformed
 
-    private void NgayBatDauTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NgayBatDauTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NgayBatDauTextActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -235,13 +233,13 @@ public class TaoMoiDotThuPhiJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel MaDotThuPhi;
     private javax.swing.JTextField MaDotThuPhiText;
     private javax.swing.JLabel NgayBatDau;
-    private javax.swing.JTextField NgayBatDauText;
     private javax.swing.JLabel NgayKetThuc;
-    private javax.swing.JTextField NgayKetThucText;
     private javax.swing.JLabel SoTien;
     private javax.swing.JTextField SoTienText;
     private javax.swing.JLabel TenDotThuPhi;
     private javax.swing.JTextField TenDotThuPhiText;
     private javax.swing.JLabel jLabel1;
+    private com.toedter.calendar.JDateChooser ngayBatDauJdc;
+    private com.toedter.calendar.JDateChooser ngayKetThucJdc;
     // End of variables declaration//GEN-END:variables
 }

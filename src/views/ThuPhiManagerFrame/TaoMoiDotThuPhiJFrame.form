@@ -23,38 +23,37 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="MaDotThuPhi" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="TenDotThuPhi" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="SoTien" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="NgayBatDau" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="NgayKetThuc" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="MaDotThuPhiText" alignment="0" pref="138" max="32767" attributes="0"/>
-                          <Component id="TenDotThuPhiText" alignment="0" max="32767" attributes="0"/>
-                          <Component id="SoTienText" alignment="0" max="32767" attributes="0"/>
-                          <Component id="NgayBatDauText" alignment="0" max="32767" attributes="0"/>
-                          <Component id="NgayKetThucText" alignment="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="MaDotThuPhi" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                      <Component id="CancelButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-                      <Component id="CreateButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="SoTien" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="NgayBatDau" alignment="0" max="32767" attributes="0"/>
+                      <Component id="TenDotThuPhi" alignment="0" max="32767" attributes="0"/>
                   </Group>
+                  <Component id="NgayKetThuc" alignment="1" min="-2" pref="93" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="69" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="ngayBatDauJdc" alignment="0" max="32767" attributes="0"/>
+                  <Component id="MaDotThuPhiText" alignment="0" pref="138" max="32767" attributes="0"/>
+                  <Component id="TenDotThuPhiText" alignment="0" max="32767" attributes="0"/>
+                  <Component id="SoTienText" alignment="0" max="32767" attributes="0"/>
+                  <Component id="ngayKetThucJdc" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace pref="34" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+              <Component id="CancelButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+              <Component id="CreateButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -80,16 +79,19 @@
                   <Component id="SoTienText" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="NgayBatDau" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="NgayBatDauText" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="NgayBatDau" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="ngayBatDauJdc" min="-2" pref="24" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="NgayKetThuc" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="ngayKetThucJdc" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="5" max="32767" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="NgayKetThuc" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="NgayKetThucText" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="20" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CancelButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="CreateButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -143,11 +145,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="SoTienText">
     </Component>
-    <Component class="javax.swing.JTextField" name="NgayBatDauText">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NgayBatDauTextActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="CancelButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancel"/>
@@ -169,7 +166,15 @@
         <Property name="text" type="java.lang.String" value="Ng&#xe0;y k&#x1ebf;t th&#xfa;c"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="NgayKetThucText">
+    <Component class="com.toedter.calendar.JDateChooser" name="ngayKetThucJdc">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="ngayBatDauJdc">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
